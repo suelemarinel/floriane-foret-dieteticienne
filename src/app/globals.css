@@ -7,6 +7,7 @@
   --color-primary-light: #3a8f6f;
   --color-accent: #fdb4df;
   --color-accent-dark: #f48fc7;
+  --color-gold: #e3a857;
   --color-cream: #fdf9f5;
   --color-ink: #1b2a22;
   --color-ink-soft: #56655c;
@@ -29,6 +30,7 @@
   --color-surface-mint: var(--color-surface-mint);
   --color-surface-pink: var(--color-surface-pink);
   --color-line: var(--color-line);
+  --color-gold: var(--color-gold);
 
   --font-display: var(--font-dm-serif), Georgia, serif;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
