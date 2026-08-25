@@ -18,6 +18,8 @@ export default function CTASection() {
           </p>
           <Link
             href={siteConfig.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative mt-8 inline-flex items-center justify-center rounded-full bg-cream px-8 py-3.5 text-sm font-semibold text-primary-dark transition-colors hover:bg-accent"
           >
             Prendre rendez-vous

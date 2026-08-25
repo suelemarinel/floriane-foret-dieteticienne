@@ -31,7 +31,9 @@ export default function Header() {
         >
           <Link
             href="/"
-            className="font-display text-lg text-primary-dark tracking-tight md:text-xl"
+            className={`font-display text-lg tracking-tight transition-colors md:text-xl ${
+              scrolled ? "text-primary-dark" : "text-cream"
+            }`}
             onClick={() => setOpen(false)}
           >
             Floriane Foret
@@ -43,7 +45,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm font-medium text-ink-soft transition-colors hover:text-primary"
+                className={`text-sm font-medium transition-colors ${
+                  scrolled
+                    ? "text-ink-soft hover:text-primary"
+                    : "text-cream/90 hover:text-cream"
+                }`}
               >
                 {item.label}
               </Link>
@@ -53,7 +59,13 @@ export default function Header() {
           <div className="hidden md:block">
             <Link
               href={siteConfig.bookingUrl}
-              className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-primary-dark"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
+                scrolled
+                  ? "bg-primary text-cream hover:bg-primary-dark"
+                  : "bg-cream text-primary-dark hover:bg-primary-dark hover:text-cream"
+              }`}
             >
               Prendre RDV
             </Link>
@@ -65,31 +77,35 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Ouvrir le menu"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-cream/80 md:hidden"
+            className={`flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
+              scrolled
+                ? "border-line bg-cream/80"
+                : "border-cream/40 bg-cream/10 backdrop-blur-sm"
+            }`}
           >
             <span className="sr-only">Menu</span>
             <div className="flex flex-col gap-1.5">
               <span
-                className={`h-0.5 w-5 bg-primary-dark transition-transform ${
-                  open ? "translate-y-2 rotate-45" : ""
-                }`}
+                className={`h-0.5 w-5 transition-transform ${
+                  scrolled ? "bg-primary-dark" : "bg-cream"
+                } ${open ? "translate-y-2 rotate-45" : ""}`}
               />
               <span
-                className={`h-0.5 w-5 bg-primary-dark transition-opacity ${
-                  open ? "opacity-0" : ""
-                }`}
+                className={`h-0.5 w-5 transition-opacity ${
+                  scrolled ? "bg-primary-dark" : "bg-cream"
+                } ${open ? "opacity-0" : ""}`}
               />
               <span
-                className={`h-0.5 w-5 bg-primary-dark transition-transform ${
-                  open ? "-translate-y-2 -rotate-45" : ""
-                }`}
+                className={`h-0.5 w-5 transition-transform ${
+                  scrolled ? "bg-primary-dark" : "bg-cream"
+                } ${open ? "-translate-y-2 -rotate-45" : ""}`}
               />
             </div>
           </button>
         </div>
       </div>
 
-      {/* Nav mobile */}
+      {/* Nav mobile (toujours solide, peu importe le scroll) */}
       {open && (
         <div className="container-site mt-2 md:hidden">
           <nav className="rounded-2xl border border-line bg-cream shadow-lg">
@@ -106,6 +122,8 @@ export default function Header() {
               ))}
               <Link
                 href={siteConfig.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="mt-2 rounded-full bg-primary px-5 py-3 text-center text-sm font-semibold text-cream"
               >

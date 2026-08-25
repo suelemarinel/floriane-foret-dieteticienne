@@ -24,7 +24,7 @@ export const siteConfig = {
     doctoranytime: "", // lien profil avis
     linkedin: "",
   },
-  bookingUrl: "/contact",
+  bookingUrl: "https://www.doctoranytime.be/d/dieteticien/floriane-foret",
   description:
     "Floriane Foret, diététicienne-nutritionniste à Bruxelles, vous accompagne avec bienveillance vers une alimentation équilibrée, durable et sans culpabilité : sport, troubles digestifs, rééquilibrage alimentaire.",
 } as const;

@@ -1,39 +1,49 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/site-config";
-import PlateGraphic from "@/components/shared/PlateGraphic";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-36 pb-20 md:pt-44 md:pb-28">
-      {/* Halo décoratif en fond */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 right-[-10%] h-[420px] w-[420px] rounded-full bg-accent/25 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute bottom-[-15%] left-[-10%] h-[380px] w-[380px] rounded-full bg-primary/10 blur-3xl"
+    <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden">
+      <Image
+        src="/images/floriane-portrait.jpg"
+        alt="Floriane Foret, diététicienne-nutritionniste à Bruxelles"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-[center_25%]"
       />
 
-      <div className="container-site relative grid items-center gap-12 md:grid-cols-2 md:gap-8">
+      {/* Dégradés pour la lisibilité du texte et de la nav */}
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/5"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/50 to-transparent"
+      />
+
+      <div className="container-site relative pb-16 pt-40 md:pb-24 md:pt-48">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="max-w-xl"
         >
-          <span className="inline-flex items-center rounded-full bg-surface-mint px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-primary-dark">
+          <span className="inline-flex items-center rounded-full border border-cream/30 bg-cream/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream backdrop-blur-sm">
             Diététicienne-nutritionniste à {siteConfig.city}
           </span>
 
-          <h1 className="text-balance mt-6 font-display text-4xl leading-[1.12] text-ink sm:text-5xl md:text-[3.4rem]">
+          <h1 className="text-balance mt-6 font-display text-4xl leading-[1.12] text-cream sm:text-5xl md:text-[3.4rem]">
             Retrouvez du plaisir à manger,{" "}
-            <span className="text-accent-dark italic">sans culpabilité</span>
+            <span className="text-accent italic">sans culpabilité</span>
           </h1>
 
-          <p className="text-balance mt-6 max-w-md text-base leading-relaxed text-ink-soft md:text-lg">
+          <p className="text-balance mt-6 max-w-md text-base leading-relaxed text-cream/85 md:text-lg">
             Pas de calcul, pas de régime. Un accompagnement bienveillant et
             basé sur les preuves, pour composer une alimentation qui vous
             ressemble, à votre rythme.
@@ -42,55 +52,43 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Link
               href={siteConfig.bookingUrl}
-              className="rounded-full bg-primary px-7 py-3.5 text-sm font-semibold text-cream shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block rounded-full bg-cream px-7 py-3.5 text-sm font-semibold text-primary-dark shadow-lg transition-colors hover:bg-primary-dark hover:text-cream"
             >
               Prendre rendez-vous
             </Link>
-            <Link
-              href="/mon-parcours"
-              className="rounded-full border border-line px-7 py-3.5 text-sm font-semibold text-ink transition-colors hover:border-primary hover:text-primary"
-            >
-              Mon parcours
-            </Link>
-          </div>
-
-          <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-line pt-6">
-            <div>
-              <dt className="sr-only">Approche</dt>
-              <dd className="font-display text-xl text-primary-dark">100%</dd>
-              <p className="text-xs text-ink-soft">Sur-mesure</p>
-            </div>
-            <div>
-              <dt className="sr-only">Méthode</dt>
-              <dd className="font-display text-xl text-primary-dark">0</dd>
-              <p className="text-xs text-ink-soft">Régime imposé</p>
-            </div>
-            <div>
-              <dt className="sr-only">Approche</dt>
-              <dd className="font-display text-xl text-primary-dark">Evidence</dd>
-              <p className="text-xs text-ink-soft">Based practice</p>
-            </div>
-          </dl>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
-          className="relative mx-auto w-full max-w-sm md:max-w-md"
-        >
-          <PlateGraphic className="aspect-square w-full drop-shadow-xl" />
-
-          <div className="absolute -bottom-4 left-1/2 w-[85%] -translate-x-1/2 rounded-2xl border border-line bg-surface/95 px-5 py-3 text-center shadow-lg backdrop-blur-sm">
-            <p className="font-display text-base text-primary-dark">
-              La méthode de l&apos;assiette équilibrée
-            </p>
-            <p className="mt-0.5 text-xs text-ink-soft">
-              ½ légumes · ¼ protéines · ¼ féculents
-            </p>
-          </div>
+           </div> 
         </motion.div>
       </div>
+
+      {/* Indicateur de scroll */}
+      <motion.div
+        aria-hidden
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:block"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 8, 0] }}
+        transition={{
+          opacity: { delay: 1 },
+          y: { duration: 1.6, repeat: Infinity, ease: "easeInOut" },
+        }}
+      >
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          className="text-cream/70"
+        >
+          <path
+            d="M6 9l6 6 6-6"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </motion.div>
     </section>
   );
 }

@@ -10,25 +10,25 @@ import { motion } from "framer-motion";
  */
 export default function PlateGraphic({ className = "" }: { className?: string }) {
   const segments = [
-    // 1/2 légumes (haut du cercle -> bas), demi-cercle gauche
-    {
-      d: "M 100 100 L 100 4 A 96 96 0 0 1 100 196 Z",
-      fill: "var(--color-primary)",
-      label: "Légumes",
-    },
-    // 1/4 protéines (quart haut droit)
-    {
-      d: "M 100 100 L 100 4 A 96 96 0 0 1 179.1 148 Z",
-      fill: "var(--color-accent)",
-      label: "Protéines",
-    },
-    // 1/4 féculents (quart bas droit)
-    {
-      d: "M 100 100 L 179.1 148 A 96 96 0 0 1 100 196 Z",
-      fill: "var(--color-gold)",
-      label: "Féculents",
-    },
-  ];
+  // 1/2 légumes : moitié gauche (du haut, par la gauche, jusqu'en bas)
+  {
+    d: "M 100 100 L 100 4 A 96 96 0 0 0 100 196 Z",
+    fill: "var(--color-primary)",
+    label: "Légumes",
+  },
+  // 1/4 protéines : quart haut-droit
+  {
+    d: "M 100 100 L 100 4 A 96 96 0 0 1 196 100 Z",
+    fill: "var(--color-accent)",
+    label: "Protéines",
+  },
+  // 1/4 féculents : quart bas-droit
+  {
+    d: "M 100 100 L 196 100 A 96 96 0 0 1 100 196 Z",
+    fill: "var(--color-gold)",
+    label: "Féculents",
+  },
+];
 
   return (
     <div className={className}>
