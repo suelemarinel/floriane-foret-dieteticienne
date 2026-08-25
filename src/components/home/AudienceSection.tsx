@@ -4,15 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { accompagnements } from "@/lib/site-config";
 
-const colorMap: Record<string, { bg: string; text: string; dot: string }> = {
-  primary: { bg: "bg-surface-mint", text: "text-primary-dark", dot: "bg-primary" },
-  accent: { bg: "bg-surface-pink", text: "text-accent-dark", dot: "bg-accent" },
-  gold: { bg: "bg-gold/10", text: "text-ink", dot: "bg-gold" },
-};
-
 export default function AudienceSection() {
   return (
-    <section className="bg-surface-mint/40 py-20 md:py-28">
+    <section className="py-20 md:py-28">
       <div className="container-site">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
@@ -27,43 +21,42 @@ export default function AudienceSection() {
           </p>
         </div>
 
-        <div className="mt-14 space-y-4">
-          {accompagnements.map((item, i) => {
-            const c = colorMap[item.color] ?? colorMap.primary;
-            return (
-              <motion.div
-                key={item.slug}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+        <div className="mt-14 space-y-3">
+          {accompagnements.map((item, i) => (
+            <motion.div
+              key={item.slug}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
+            >
+              <Link
+                href={item.href}
+                className="group flex flex-col gap-4 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-primary/40 md:flex-row md:items-center md:justify-between md:p-7"
               >
-                <Link
-                  href={item.href}
-                  className={`group flex flex-col gap-4 rounded-2xl border border-line p-6 transition-all hover:shadow-md md:flex-row md:items-center md:justify-between md:p-8 ${c.bg}`}
-                >
-                  <div className="flex items-start gap-4 md:items-center">
-                    <span
-                      aria-hidden
-                      className={`mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full md:mt-0 ${c.dot}`}
-                    />
-                    <div>
-                      <p className={`font-display text-xl ${c.text}`}>
-                        {item.audience}
-                      </p>
-                      <p className="mt-1 text-sm text-ink-soft">
-                        {item.tagline}
-                      </p>
-                    </div>
-                  </div>
-                  <span className="inline-flex items-center gap-2 text-sm font-semibold text-ink transition-transform group-hover:translate-x-1">
-                    {item.label}
-                    <span aria-hidden>→</span>
+                <div className="flex items-center gap-5">
+                  <span
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-mint font-display text-base text-primary-dark"
+                    aria-hidden
+                  >
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                </Link>
-              </motion.div>
-            );
-          })}
+                  <div>
+                    <p className="font-display text-xl text-ink">
+                      {item.audience}
+                    </p>
+                    <p className="mt-1 text-sm text-ink-soft">
+                      {item.tagline}
+                    </p>
+                  </div>
+                </div>
+                <span className="ml-[60px] inline-flex items-center gap-2 text-sm font-semibold text-primary-dark transition-transform group-hover:translate-x-1 md:ml-0">
+                  {item.label}
+                  <span aria-hidden>→</span>
+                </span>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
