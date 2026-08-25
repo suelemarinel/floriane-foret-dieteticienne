@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import Hero from "@/components/home/Hero";
 import TopicsSection from "@/components/home/TopicsSection";
+import AudienceSection from "@/components/home/AudienceSection";
 
 export const metadata: Metadata = buildMetadata({
   title: "Diététicienne-nutritionniste à Bruxelles",
@@ -15,6 +16,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TopicsSection />
+      <AudienceSection />
     </>
   );
 }
