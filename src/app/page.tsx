@@ -3,6 +3,10 @@ import { buildMetadata } from "@/lib/seo";
 import Hero from "@/components/home/Hero";
 import TopicsSection from "@/components/home/TopicsSection";
 import AudienceSection from "@/components/home/AudienceSection";
+import ValuesSection from "@/components/home/ValuesSection";
+import SessionSteps from "@/components/home/SessionSteps";
+import Testimonials from "@/components/home/Testimonials";
+import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = buildMetadata({
   title: "Diététicienne-nutritionniste à Bruxelles",
@@ -17,6 +21,10 @@ export default function HomePage() {
       <Hero />
       <TopicsSection />
       <AudienceSection />
+      <ValuesSection />
+      <SessionSteps />
+      <Testimonials />
+      <CTASection />
     </>
   );
 }
