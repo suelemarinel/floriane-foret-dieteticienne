@@ -54,7 +54,7 @@ export const accompagnements = [
   {
     slug: "alimentation-equilibree",
     label: "Alimentation équilibrée",
-    href: "/accompagnement/alimentation-equilibree",
+    href: "/accompagnement#alimentation-equilibree",
     tagline: "Retrouver des repères simples, sans régime ni culpabilité.",
     audience: "Vous voulez simplement mieux manger, au quotidien.",
     color: "primary",
@@ -62,7 +62,7 @@ export const accompagnements = [
   {
     slug: "troubles-digestifs",
     label: "Troubles digestifs",
-    href: "/accompagnement/troubles-digestifs",
+    href: "/accompagnement#troubles-digestifs",
     tagline: "Apaiser une digestion capricieuse au quotidien.",
     audience: "Votre digestion vous complique la vie.",
     color: "accent",
@@ -70,7 +70,7 @@ export const accompagnements = [
   {
     slug: "sport",
     label: "Nutrition sportive",
-    href: "/accompagnement/sport",
+    href: "/accompagnement#sport",
     tagline: "Manger juste pour progresser et récupérer.",
     audience: "Vous êtes sportif·ve et voulez optimiser votre énergie.",
     color: "gold",
