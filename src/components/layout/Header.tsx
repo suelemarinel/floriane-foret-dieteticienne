@@ -1,12 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNav, siteConfig } from "@/lib/site-config";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -14,6 +16,9 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -41,19 +46,31 @@ export default function Header() {
 
           {/* Nav desktop */}
           <nav className="hidden items-center gap-7 md:flex">
-            {mainNav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`text-sm font-medium transition-colors ${
-                  scrolled
-                    ? "text-ink-soft hover:text-primary"
-                    : "text-cream/90 hover:text-cream"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {mainNav.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`text-sm transition-colors ${
+                    active
+                      ? "font-semibold"
+                      : "font-medium"
+                  } ${
+                    scrolled
+                      ? active
+                        ? "text-primary-dark"
+                        : "text-ink-soft hover:text-primary"
+                      : active
+                        ? "text-cream underline decoration-accent decoration-2 underline-offset-8"
+                        : "text-cream/90 hover:text-cream"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden md:block">
@@ -110,16 +127,24 @@ export default function Header() {
         <div className="container-site mt-2 md:hidden">
           <nav className="rounded-2xl border border-line bg-cream shadow-lg">
             <div className="flex flex-col gap-1 p-4">
-              {mainNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="rounded-lg px-3 py-3 text-base font-medium text-ink transition-colors hover:bg-surface-mint"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {mainNav.map((item) => {
+                const active = isActive(item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={`rounded-lg px-3 py-3 text-base transition-colors ${
+                      active
+                        ? "bg-surface-mint font-semibold text-primary-dark"
+                        : "font-medium text-ink hover:bg-surface-mint"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
               <Link
                 href={siteConfig.bookingUrl}
                 target="_blank"
