@@ -7,88 +7,75 @@ import { siteConfig } from "@/lib/site-config";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100svh] w-full items-end overflow-hidden">
-      <Image
-        src="/images/floriane-portrait.jpg"
-        alt="Floriane Foret, diététicienne-nutritionniste à Bruxelles"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-[center_25%]"
-      />
+    <section className="relative w-full overflow-hidden bg-cream">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-col lg:flex-row">
+        {/* Texte */}
+        <div className="flex w-full flex-col justify-center px-6 pb-24 pt-28 md:px-10 md:pt-32 lg:w-1/2 lg:px-16 lg:pt-32 xl:pl-24">
+          <motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+  className="max-w-xl"
+>
+  <div className="flex items-center gap-3 text-sm text-ink-soft">
+    Diététicienne-nutritionniste à {siteConfig.city}
+  </div>
 
-      {/* Dégradés pour la lisibilité du texte et de la nav */}
-      <div
-        aria-hidden
-        className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-ink/5"
-      />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-ink/50 to-transparent"
-      />
+  <h1 className="text-balance mt-7 font-display text-5xl leading-[1.08] text-ink sm:text-6xl md:text-[4rem]">
+    Et si manger redevenait{" "}
+    <span className="text-accent italic">simple</span> ?
+  </h1>
 
-      <div className="container-site relative pb-16 pt-40 md:pb-24 md:pt-48">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="max-w-xl"
-        >
-          <span className="inline-flex items-center rounded-full border border-cream/30 bg-cream/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream backdrop-blur-sm">
-            Diététicienne-nutritionniste à {siteConfig.city}
-          </span>
+  <p className="text-balance mt-7 text-base leading-relaxed text-ink-soft md:text-lg">
+    Diététicienne-nutritionniste spécialisée en rééquilibrage
+    alimentaire, nutrition du sport et troubles digestifs, je vous
+    accompagne sans régime ni restriction, avec bienveillance, pour
+    retrouver plaisir et sérénité dans votre assiette.
+  </p>
 
-          <h1 className="text-balance mt-6 font-display text-4xl leading-[1.12] text-cream sm:text-5xl md:text-[3.4rem]">
-            Retrouvez du plaisir à manger,{" "}
-            <span className="text-accent italic">sans culpabilité</span>
-          </h1>
+  <div className="mt-9 flex justify-center lg:justify-start">
+    <Link
+      href={siteConfig.bookingUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block rounded-full bg-primary px-8 py-4 text-sm font-semibold text-cream shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
+    >
+      Prendre rendez-vous
+    </Link>
+  </div>
+</motion.div>
+        </div>
 
-          <p className="text-balance mt-6 max-w-md text-base leading-relaxed text-cream/85 md:text-lg">
-            Pas de calcul, pas de régime. Un accompagnement bienveillant et
-            basé sur les preuves, pour composer une alimentation qui vous
-            ressemble, à votre rythme.
-          </p>
+      {/* Photo */}
+<div className="relative w-full lg:w-1/2">
+  {/* Panneau de couleur plein, décalé légèrement à gauche */}
+  <div
+    aria-hidden
+    className="absolute -left-3 top-0 h-full w-full rounded-tl-[3rem] rounded-bl-[3rem] rounded-br-[3rem] bg-primary/90 md:-left-4"
+  />
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Link
-              href={siteConfig.bookingUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded-full bg-cream px-7 py-3.5 text-sm font-semibold text-primary-dark shadow-lg transition-colors hover:bg-primary-dark hover:text-cream"
-            >
-              Prendre rendez-vous
-            </Link>
-           </div> 
-        </motion.div>
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.7, ease: "easeOut", delay: 0.3 }}
+    className="relative h-[100svh] w-full overflow-hidden rounded-tl-[3rem] rounded-bl-[3rem]"
+  >
+    <Image
+      src="/images/floriane-2.jpeg"
+      alt="Floriane Foret, diététicienne-nutritionniste, dans sa cuisine"
+      fill
+      priority
+      sizes="(min-width: 1024px) 50vw, 100vw"
+      className="object-cover object-[65%_35%]"
+    />
+    {/* Voile pour la lisibilité de la nav qui chevauche la photo */}
+    <div
+      aria-hidden
+      className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-ink/45 to-transparent"
+    />
+  </motion.div>
+</div>
       </div>
-
-      {/* Indicateur de scroll */}
-      <motion.div
-        aria-hidden
-        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:block"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{
-          opacity: { delay: 1 },
-          y: { duration: 1.6, repeat: Infinity, ease: "easeInOut" },
-        }}
-      >
-        <svg
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          className="text-cream/70"
-        >
-          <path
-            d="M6 9l6 6 6-6"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </motion.div>
     </section>
   );
 }

@@ -36,53 +36,45 @@ export default function Header() {
         >
           <Link
             href="/"
-            className={`font-display text-lg tracking-tight transition-colors md:text-xl ${
-              scrolled ? "text-primary-dark" : "text-cream"
-            }`}
+            className="font-display text-lg tracking-tight text-primary-dark transition-colors md:text-xl"
             onClick={() => setOpen(false)}
           >
             Floriane Foret
           </Link>
 
           {/* Nav desktop */}
-          <nav className="hidden items-center gap-7 md:flex">
-            {mainNav.map((item) => {
-              const active = isActive(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={`text-sm transition-colors ${
-                    active
-                      ? "font-semibold"
-                      : "font-medium"
-                  } ${
-                    scrolled
-                      ? active
-                        ? "text-primary-dark"
-                        : "text-ink-soft hover:text-primary"
-                      : active
-                        ? "text-cream underline decoration-accent decoration-2 underline-offset-8"
-                        : "text-cream/90 hover:text-cream"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
+<nav className="hidden items-center gap-7 md:flex">
+  {mainNav.map((item, index) => {
+    const active = isActive(item.href);
+    const overPhoto = !scrolled && index >= 2; // Accompagnement, Contact — uniquement quand pas scrollé
+
+    return (
+      <Link
+        key={item.href}
+        href={item.href}
+        aria-current={active ? "page" : undefined}
+        className={`text-sm transition-colors ${
+          active ? "font-semibold" : "font-medium"
+        } ${
+          overPhoto
+            ? "text-cream"
+            : active
+              ? "text-primary-dark"
+              : "text-ink-soft hover:text-primary"
+        }`}
+      >
+        {item.label}
+      </Link>
+    );
+  })}
+</nav>
 
           <div className="hidden md:block">
             <Link
               href={siteConfig.bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className={`rounded-full px-5 py-2.5 text-sm font-semibold transition-colors ${
-                scrolled
-                  ? "bg-primary text-cream hover:bg-primary-dark"
-                  : "bg-cream text-primary-dark hover:bg-primary-dark hover:text-cream"
-              }`}
+              className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:bg-primary-dark"
             >
               Prendre RDV
             </Link>
@@ -94,28 +86,24 @@ export default function Header() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label="Ouvrir le menu"
-            className={`flex h-10 w-10 items-center justify-center rounded-full border md:hidden ${
-              scrolled
-                ? "border-line bg-cream/80"
-                : "border-cream/40 bg-cream/10 backdrop-blur-sm"
-            }`}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-cream/80 md:hidden"
           >
             <span className="sr-only">Menu</span>
             <div className="flex flex-col gap-1.5">
               <span
-                className={`h-0.5 w-5 transition-transform ${
-                  scrolled ? "bg-primary-dark" : "bg-cream"
-                } ${open ? "translate-y-2 rotate-45" : ""}`}
+                className={`h-0.5 w-5 bg-primary-dark transition-transform ${
+                  open ? "translate-y-2 rotate-45" : ""
+                }`}
               />
               <span
-                className={`h-0.5 w-5 transition-opacity ${
-                  scrolled ? "bg-primary-dark" : "bg-cream"
-                } ${open ? "opacity-0" : ""}`}
+                className={`h-0.5 w-5 bg-primary-dark transition-opacity ${
+                  open ? "opacity-0" : ""
+                }`}
               />
               <span
-                className={`h-0.5 w-5 transition-transform ${
-                  scrolled ? "bg-primary-dark" : "bg-cream"
-                } ${open ? "-translate-y-2 -rotate-45" : ""}`}
+                className={`h-0.5 w-5 bg-primary-dark transition-transform ${
+                  open ? "-translate-y-2 -rotate-45" : ""
+                }`}
               />
             </div>
           </button>

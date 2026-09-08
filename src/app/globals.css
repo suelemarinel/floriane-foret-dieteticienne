@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 :root {
   /* Palette de marque */
   --color-primary: #1f6b51;
@@ -8,15 +7,14 @@
   --color-accent: #fdb4df;
   --color-accent-dark: #f48fc7;
   --color-gold: #e3a857;
-  --color-cream: #FFF6EE;
+  --color-cream: #FAFAF8;
   --color-ink: #1b2a22;
   --color-ink-soft: #56655c;
   --color-surface: #ffffff;
   --color-surface-mint: #e9f2ec;
   --color-surface-pink: #fdeaf5;
-  --color-line: #e6ddd0;
+  --color-line: #e5e5e1;
 }
-
 @theme inline {
   --color-primary: var(--color-primary);
   --color-primary-dark: var(--color-primary-dark);
@@ -31,39 +29,31 @@
   --color-surface-pink: var(--color-surface-pink);
   --color-line: var(--color-line);
   --color-gold: var(--color-gold);
-
   --font-display: var(--font-dm-serif), Georgia, serif;
   --font-sans: var(--font-poppins), system-ui, sans-serif;
-
   --radius-xl: 1.75rem;
   --radius-lg: 1.25rem;
 }
-
 * {
   border-color: var(--color-line);
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   background: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
 }
-
 ::selection {
   background: var(--color-accent);
   color: var(--color-primary-dark);
 }
-
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: 4px;
 }
-
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -77,20 +67,40 @@ body {
     scroll-behavior: auto !important;
   }
 }
-
 .text-balance {
   text-wrap: balance;
 }
-
 .container-site {
   width: 100%;
   max-width: 1180px;
   margin-inline: auto;
   padding-inline: 1.5rem;
 }
-
 @media (min-width: 768px) {
   .container-site {
     padding-inline: 2.5rem;
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-right {
+  animation: marquee-right 38s linear infinite;
+}
+
+.animate-marquee-right:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-right {
+    animation: none;
   }
 }

@@ -1,21 +1,96 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import { doctoranytimeRating, testimonials } from "@/data/testimonials";
+
+const avatarColors = [
+  "bg-surface-mint text-primary-dark",
+  "bg-surface-pink text-accent-dark",
+  "bg-gold/15 text-ink",
+];
 
 function Stars() {
   return (
-    <div className="flex gap-0.5" aria-hidden>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 20 20" className="h-4 w-4 fill-gold">
-          <path d="M10 1.5l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.8l-5.2 2.7 1-5.8L1.6 7.6l5.8-.8z" />
-        </svg>
-      ))}
+    <div className="text-sm tracking-tight" aria-hidden>
+      ⭐️⭐️⭐️⭐️⭐️
     </div>
   );
 }
 
+function initials(name: string) {
+  return name.replace(/\./g, "").split(" ").join("").slice(0, 2).toUpperCase();
+}
+
+function ArrowIcon({ direction }: { direction: "left" | "right" }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={`h-4 w-4 ${direction === "left" ? "" : "rotate-180"}`}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+  );
+}
+
 export default function Testimonials() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const pausedRef = useRef(false);
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Défilement automatique continu, avec boucle infinie invisible
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+
+    const prefersReduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReduced) return;
+
+    let frameId: number;
+    const speed = 0.5; // pixels par frame (~30px/s à 60fps)
+
+    const step = () => {
+      if (!pausedRef.current) {
+        el.scrollLeft += speed;
+        const halfWidth = el.scrollWidth / 2;
+        if (el.scrollLeft >= halfWidth) {
+          el.scrollLeft -= halfWidth;
+        }
+      }
+      frameId = requestAnimationFrame(step);
+    };
+    frameId = requestAnimationFrame(step);
+
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  const pauseThenResume = () => {
+    pausedRef.current = true;
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+    resumeTimeoutRef.current = setTimeout(() => {
+      pausedRef.current = false;
+    }, 3000);
+  };
+
+  const scrollByCard = (direction: "left" | "right") => {
+    const el = trackRef.current;
+    if (!el) return;
+    pauseThenResume();
+    const card = el.querySelector("[data-card]") as HTMLElement | null;
+    const amount = card ? card.offsetWidth + 20 : 320;
+    el.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section className="py-20 md:py-28">
       <div className="container-site">
@@ -48,32 +123,66 @@ export default function Testimonials() {
             </div>
           </a>
         </div>
+      </div>
 
-        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {testimonials.map((t, i) => (
-            <motion.figure
-              key={t.name + t.date}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-              className="flex flex-col justify-between rounded-2xl border border-line bg-surface p-6"
+      {/* Carrousel */}
+      <div className="container-site relative mt-14">
+        <div
+          ref={trackRef}
+          onMouseEnter={() => {
+            pausedRef.current = true;
+          }}
+          onMouseLeave={() => {
+            pausedRef.current = false;
+          }}
+          className="flex gap-5 overflow-x-auto scroll-smooth pb-2 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {[...testimonials, ...testimonials].map((t, i) => (
+            <figure
+              key={`${t.name}-${t.date}-${i}`}
+              data-card
+              className="flex w-[280px] shrink-0 flex-col rounded-2xl border border-line bg-surface p-6 shadow-sm md:w-[300px]"
             >
-              <div>
+              <blockquote className="font-display text-xl leading-snug text-ink">
+                &laquo; {t.text} &raquo;
+              </blockquote>
+
+              <div className="mt-auto">
                 <Stars />
-                <blockquote className="mt-4 text-sm leading-relaxed text-ink">
-                  &laquo; {t.text} &raquo;
-                </blockquote>
+                <figcaption className="mt-4 flex items-center gap-3 border-t border-line pt-4">
+                  <span
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${avatarColors[i % avatarColors.length]}`}
+                    aria-hidden
+                  >
+                    {initials(t.name)}
+                  </span>
+                  <div className="text-xs text-ink-soft">
+                    <p className="font-semibold text-ink">{t.name}</p>
+                    <p>{t.date}</p>
+                  </div>
+                </figcaption>
               </div>
-              <figcaption className="mt-6 flex items-center justify-between text-xs text-ink-soft">
-                <span className="font-semibold text-primary-dark">
-                  {t.name}
-                </span>
-                <span>{t.date}</span>
-              </figcaption>
-            </motion.figure>
+            </figure>
           ))}
         </div>
+
+        {/* Flèches de navigation */}
+        <button
+          type="button"
+          onClick={() => scrollByCard("left")}
+          aria-label="Avis précédents"
+          className="absolute -left-4 top-[42%] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface text-ink shadow-lg transition-colors hover:border-primary lg:flex"
+        >
+          <ArrowIcon direction="left" />
+        </button>
+        <button
+          type="button"
+          onClick={() => scrollByCard("right")}
+          aria-label="Avis suivants"
+          className="absolute -right-4 top-[42%] hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-surface text-ink shadow-lg transition-colors hover:border-primary lg:flex"
+        >
+          <ArrowIcon direction="right" />
+        </button>
       </div>
     </section>
   );

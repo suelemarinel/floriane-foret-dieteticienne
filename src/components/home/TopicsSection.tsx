@@ -1,24 +1,30 @@
 "use client";
 
-"use client";
-
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { accompagnements } from "@/lib/site-config";
 
 const topics = [
   {
-    title: "Une digestion qui vous complique la vie ?",
-    description:
-      "Ballonnements, lourdeurs, transit irrégulier, inconfort après les repas... Chaque ajustement compte pour retrouver un quotidien plus léger.",
-  },
-  {
-    title: "Envie de reprendre le sport sereinement ?",
-    description:
-      "Manque d'énergie, récupération difficile, alimentation qui ne suit pas le rythme des entraînements... Mangeons juste, pour progresser durablement.",
-  },
-  {
     title: "Une alimentation qui manque de repères ?",
     description:
-      "Trop de règles contradictoires, culpabilité, difficulté à s'organiser au quotidien... Reconstruisons ensemble des habitudes simples et durables.",
+      "Envie de changer vos habitudes, sortir des régimes à répétition, ou simplement mieux comprendre vos besoins... Reconstruisons ensemble des habitudes simples et durables.",
+    keyword: "équilibr",
+    accent: "bg-primary",
+  },
+  {
+    title: "Envie de mieux nourrir votre pratique sportive ?",
+    description:
+      "Que vous débutiez, cherchiez à optimiser votre récupération ou souhaitiez simplement mieux comprendre les liens entre alimentation et performance... Une alimentation ajustée à vos besoins, pour progresser sur la durée.",
+    keyword: "sport",
+    accent: "bg-ink",
+  },
+  {
+    title: "Une digestion qui vous complique la vie ?",
+    description:
+      "Trop de règles contradictoires, culpabilité, transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
+    keyword: "digest",
+    accent: "bg-accent",
   },
 ];
 
@@ -31,78 +37,65 @@ export default function TopicsSection() {
             Ça vous parle ?
           </span>
           <h2 className="text-balance mt-3 font-display text-3xl text-ink md:text-4xl">
-            Changer votre vie en changeant votre alimentation
+            Prendre soin de vous, à travers votre assiette
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
             Votre alimentation répond à des besoins physiologiques, mais
-            aussi psychologiques et sociaux. Manger équilibré, ce n&apos;est
-            pas supprimer le plaisir : c&apos;est trouver votre propre
-            équilibre.
+            aussi psychologiques et sociaux. Peu importe votre point de
+            départ, l&apos;accompagnement s&apos;adapte à vous — pas
+            l&apos;inverse.
           </p>
         </div>
 
-        <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
-          {/* Liste des situations */}
-          <div className="space-y-3 lg:col-span-7">
-            {topics.map((topic, i) => (
+        <div className="mt-14 border-t border-line">
+          {topics.map((topic, i) => {
+            const match = accompagnements.find((a) =>
+              `${a.label} ${a.audience} ${a.tagline}`
+                .toLowerCase()
+                .includes(topic.keyword)
+            );
+
+            return (
               <motion.div
                 key={topic.title}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
-                className="flex gap-5 rounded-2xl border border-line bg-surface p-6 transition-colors hover:border-primary/40"
+                className="flex flex-col gap-5 border-b border-line py-10 md:flex-row md:items-start md:justify-between md:gap-12"
               >
-                <span
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-surface-mint font-display text-base text-primary-dark"
-                  aria-hidden
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <div>
-                  <h3 className="font-display text-xl text-ink">
-                    {topic.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-ink-soft">
-                    {topic.description}
-                  </p>
+                <div className="flex gap-5 md:max-w-xl">
+                  <span
+                    className={`mt-2.5 h-2.5 w-2.5 shrink-0 rounded-full ${topic.accent}`}
+                    aria-hidden
+                  />
+                  <div>
+                    <h3 className="font-display text-xl text-ink md:text-2xl">
+                      {topic.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-soft md:text-base">
+                      {topic.description}
+                    </p>
+                  </div>
                 </div>
+
+                {match && (
+                  <Link
+                    href={match.href}
+                    className="group inline-flex w-fit shrink-0 items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-sm font-semibold text-primary-dark transition-all hover:border-primary-dark hover:bg-primary-dark hover:text-cream md:mt-1"
+                  >
+                    {match.label}
+                    <span
+                      aria-hidden
+                      className="transition-transform group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  </Link>
+                )}
               </motion.div>
-            ))}
-          </div>
-
-          {/* Vidéo ancrée */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="relative mx-auto w-full max-w-xs lg:col-span-5 lg:max-w-none"
-          >
-            <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-primary/8" />
-            <div className="relative aspect-square overflow-hidden rounded-[2rem] shadow-xl shadow-primary-dark/10">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/videos/hero-plate-poster.jpg"
-                className="h-full w-full object-cover"
-              >
-                <source src="/videos/hero-plate.mp4" type="video/mp4" />
-              </video>
-            </div>
-
-            <div className="absolute -bottom-5 left-1/2 w-[80%] -translate-x-1/2 rounded-2xl border border-line bg-surface/95 px-5 py-3 text-center shadow-lg backdrop-blur-sm">
-              <p className="font-display text-base text-primary-dark">
-                La méthode de l&apos;assiette équilibrée
-              </p>
-              <p className="mt-0.5 text-xs text-ink-soft">
-                ½ légumes · ¼ protéines · ¼ féculents
-              </p>
-            </div>
-          </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
