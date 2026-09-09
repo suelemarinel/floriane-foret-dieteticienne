@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Salad, Dumbbell, Leaf } from "lucide-react";
 import { accompagnements } from "@/lib/site-config";
 
 const topics = [
@@ -10,21 +11,27 @@ const topics = [
     description:
       "Envie de changer vos habitudes, sortir des régimes à répétition, ou simplement mieux comprendre vos besoins... Reconstruisons ensemble des habitudes simples et durables.",
     keyword: "équilibr",
-    accent: "bg-primary",
+    icon: Salad,
+    badgeBg: "bg-primary/10",
+    iconColor: "text-primary",
   },
   {
     title: "Envie de mieux nourrir votre pratique sportive ?",
     description:
       "Que vous débutiez, cherchiez à optimiser votre récupération ou souhaitiez simplement mieux comprendre les liens entre alimentation et performance... Une alimentation ajustée à vos besoins, pour progresser sur la durée.",
     keyword: "sport",
-    accent: "bg-ink",
+    icon: Dumbbell,
+    badgeBg: "bg-ink/10",
+    iconColor: "text-ink",
   },
   {
     title: "Une digestion qui vous complique la vie ?",
     description:
       "Trop de règles contradictoires, culpabilité, transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
     keyword: "digest",
-    accent: "bg-accent",
+    icon: Leaf,
+    badgeBg: "bg-accent/15",
+    iconColor: "text-primary-dark",
   },
 ];
 
@@ -42,7 +49,7 @@ export default function TopicsSection() {
           <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
             Votre alimentation répond à des besoins physiologiques, mais
             aussi psychologiques et sociaux. Peu importe votre point de
-            départ, l&apos;accompagnement s&apos;adapte à vous — pas
+            départ, l&apos;accompagnement s&apos;adapte à vous, pas
             l&apos;inverse.
           </p>
         </div>
@@ -54,6 +61,7 @@ export default function TopicsSection() {
                 .toLowerCase()
                 .includes(topic.keyword)
             );
+            const Icon = topic.icon;
 
             return (
               <motion.div
@@ -66,9 +74,15 @@ export default function TopicsSection() {
               >
                 <div className="flex gap-5 md:max-w-xl">
                   <span
-                    className={`mt-2.5 h-2.5 w-2.5 shrink-0 rounded-full ${topic.accent}`}
+                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${topic.badgeBg}`}
                     aria-hidden
-                  />
+                  >
+                    <Icon
+                      size={20}
+                      strokeWidth={1.5}
+                      className={topic.iconColor}
+                    />
+                  </span>
                   <div>
                     <h3 className="font-display text-xl text-ink md:text-2xl">
                       {topic.title}
