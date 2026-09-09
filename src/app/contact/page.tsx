@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
+import ContactHero from "@/components/contact/ContactHero";
 import ContactInfoCard from "@/components/contact/ContactInfoCard";
 import {
   PhoneIcon,
@@ -22,20 +23,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <section className="bg-primary-dark pb-16 pt-40 md:pb-20 md:pt-48">
-        <div className="container-site">
-          <span className="inline-flex items-center rounded-full border border-cream/30 bg-cream/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-cream backdrop-blur-sm">
-            Contact
-          </span>
-          <h1 className="text-balance mt-6 max-w-2xl font-display text-4xl leading-[1.12] text-cream sm:text-5xl md:text-[3.2rem]">
-            Une question ? Discutons-en.
-          </h1>
-          <p className="text-balance mt-6 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg">
-            Par téléphone, par mail, ou directement en ligne pour prendre
-            rendez-vous — comme vous préférez.
-          </p>
-        </div>
-      </section>
+      <ContactHero />
 
       <section className="py-20 md:py-28">
         <div className="container-site grid gap-10 lg:grid-cols-12 lg:items-start">

@@ -5,14 +5,14 @@ import { motion } from "framer-motion";
 
 export default function ParcoursHero() {
   return (
-    <section className="relative overflow-hidden bg-cream pb-24 pt-40 md:pb-32 md:pt-48">
+    <section className="relative bg-cream pb-24 pt-40 md:pb-32 md:pt-48">
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-16 right-0 h-72 w-72 rounded-full bg-accent/25 blur-3xl md:-top-24 md:right-24"
+        className="pointer-events-none absolute -top-16 right-0 h-72 w-72 rounded-full bg-accent/45 blur-3xl md:-top-24 md:right-24"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full bg-gold/15 blur-3xl"
+        className="pointer-events-none absolute bottom-0 left-0 h-96 w-96 -translate-y-8 rounded-full bg-primary/30 blur-3xl"
       />
 
       <div className="container-site relative grid gap-16 md:grid-cols-12 md:items-center">

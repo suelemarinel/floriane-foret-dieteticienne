@@ -29,8 +29,8 @@ const steps = [
 
 export default function ParcoursTimeline() {
   return (
-    <section className="py-20 md:py-28">
-      <div className="container-site">
+    <section className="relative py-20 md:py-28">
+      <div className="container-site relative">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
             Étape par étape

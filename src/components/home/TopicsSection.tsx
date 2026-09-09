@@ -21,13 +21,13 @@ const topics = [
       "Que vous débutiez, cherchiez à optimiser votre récupération ou souhaitiez simplement mieux comprendre les liens entre alimentation et performance... Une alimentation ajustée à vos besoins, pour progresser sur la durée.",
     keyword: "sport",
     icon: Dumbbell,
-    badgeBg: "bg-ink/10",
-    iconColor: "text-ink",
+    badgeBg: "bg-terracotta/10",
+    iconColor: "text-terracotta",
   },
   {
     title: "Une digestion qui vous complique la vie ?",
     description:
-      "Transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
+      "Trop de règles contradictoires, culpabilité, transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
     keyword: "digest",
     icon: Leaf,
     badgeBg: "bg-accent/15",
@@ -49,7 +49,7 @@ export default function TopicsSection() {
           <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
             Votre alimentation répond à des besoins physiologiques, mais
             aussi psychologiques et sociaux. Peu importe votre point de
-            départ, l&apos;accompagnement s&apos;adapte à vous, pas
+            départ, l&apos;accompagnement s&apos;adapte à vous — pas
             l&apos;inverse.
           </p>
         </div>

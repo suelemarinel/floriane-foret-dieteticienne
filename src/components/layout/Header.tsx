@@ -5,6 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { mainNav, siteConfig } from "@/lib/site-config";
 
+// Pages avec un hero sombre plein cadre en haut (texte clair nécessaire tant qu'on n'a pas scrollé)
+const FULL_DARK_HERO_PAGES = ["/accompagnement", "/contact"];
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -19,6 +22,10 @@ export default function Header() {
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
+
+  const isHomePage = pathname === "/";
+  const isFullDarkHeroPage = FULL_DARK_HERO_PAGES.includes(pathname);
+  const logoLightText = !scrolled && isFullDarkHeroPage;
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -36,38 +43,43 @@ export default function Header() {
         >
           <Link
             href="/"
-            className="font-display text-lg tracking-tight text-primary-dark transition-colors md:text-xl"
+            className={`font-display text-lg tracking-tight transition-colors md:text-xl ${
+              logoLightText ? "text-cream" : "text-primary-dark"
+            }`}
             onClick={() => setOpen(false)}
           >
             Floriane Foret
           </Link>
 
           {/* Nav desktop */}
-<nav className="hidden items-center gap-7 md:flex">
-  {mainNav.map((item, index) => {
-    const active = isActive(item.href);
-    const overPhoto = !scrolled && index >= 2; // Accompagnement, Contact — uniquement quand pas scrollé
+          <nav className="hidden items-center gap-10 md:flex">
+            {mainNav.map((item, index) => {
+              const active = isActive(item.href);
+              const overPhoto =
+                !scrolled && isHomePage && index >= 2; // home : seule la moitié droite est sombre
+              const lightText =
+                overPhoto || (!scrolled && isFullDarkHeroPage); // pages avec hero sombre plein cadre
 
-    return (
-      <Link
-        key={item.href}
-        href={item.href}
-        aria-current={active ? "page" : undefined}
-        className={`text-sm transition-colors ${
-          active ? "font-semibold" : "font-medium"
-        } ${
-          overPhoto
-            ? "text-cream"
-            : active
-              ? "text-primary-dark"
-              : "text-ink-soft hover:text-primary"
-        }`}
-      >
-        {item.label}
-      </Link>
-    );
-  })}
-</nav>
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`text-sm transition-colors ${
+                    active ? "font-semibold" : "font-medium"
+                  } ${
+                    lightText
+                      ? "text-cream"
+                      : active
+                        ? "text-primary-dark"
+                        : "text-ink-soft hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
 
           <div className="hidden md:block">
             <Link

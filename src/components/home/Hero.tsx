@@ -51,7 +51,7 @@ export default function Hero() {
   {/* Panneau de couleur plein, décalé légèrement à gauche */}
   <div
     aria-hidden
-    className="absolute -left-3 top-0 h-full w-full rounded-tl-[3rem] rounded-bl-[3rem] rounded-br-[3rem] bg-primary/90 md:-left-4"
+    className="absolute -left-3 top-0 h-full w-full rounded-tl-[3rem] rounded-bl-[3rem] rounded-br-[3rem] bg-primary-dark md:-left-4"
   />
 
   <motion.div

@@ -60,19 +60,19 @@ export const accompagnements = [
     color: "primary",
   },
   {
+    slug: "sport",
+    label: "Nutrition sportive",
+    href: "/accompagnement#sport",
+    tagline: "Manger juste pour progresser et récupérer.",
+    audience: "Vous êtes sportif·ve et voulez optimiser votre énergie.",
+    color: "terracotta",
+  },
+  {
     slug: "troubles-digestifs",
     label: "Troubles digestifs",
     href: "/accompagnement#troubles-digestifs",
     tagline: "Apaiser une digestion capricieuse au quotidien.",
     audience: "Votre digestion vous complique la vie.",
     color: "accent",
-  },
-  {
-    slug: "sport",
-    label: "Nutrition sportive",
-    href: "/accompagnement#sport",
-    tagline: "Manger juste pour progresser et récupérer.",
-    audience: "Vous êtes sportif·ve et voulez optimiser votre énergie.",
-    color: "gold",
   },
 ] as const;

@@ -43,7 +43,6 @@ export default function Testimonials() {
   const pausedRef = useRef(false);
   const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Défilement automatique continu, avec boucle infinie invisible
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
@@ -54,7 +53,7 @@ export default function Testimonials() {
     if (prefersReduced) return;
 
     let frameId: number;
-    const speed = 0.5; // pixels par frame (~30px/s à 60fps)
+    const speed = 0.5;
 
     const step = () => {
       if (!pausedRef.current) {
@@ -108,7 +107,7 @@ export default function Testimonials() {
             href={doctoranytimeRating.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex shrink-0 items-center gap-4 rounded-2xl border border-line bg-surface px-5 py-4 transition-colors hover:border-primary"
+            className="flex shrink-0 items-center gap-4 rounded-tl-2xl rounded-br-2xl border border-line bg-surface px-5 py-4 transition-colors hover:border-primary"
           >
             <div>
               <p className="font-display text-3xl text-primary-dark">
@@ -141,7 +140,7 @@ export default function Testimonials() {
             <figure
               key={`${t.name}-${t.date}-${i}`}
               data-card
-              className="flex w-[280px] shrink-0 flex-col rounded-2xl border border-line bg-surface p-6 shadow-sm md:w-[300px]"
+              className="flex w-[280px] shrink-0 flex-col rounded-tl-2xl rounded-br-2xl border border-line bg-surface p-6 md:w-[300px]"
             >
               <blockquote className="font-display text-xl leading-snug text-ink">
                 &laquo; {t.text} &raquo;
@@ -149,7 +148,7 @@ export default function Testimonials() {
 
               <div className="mt-auto">
                 <Stars />
-                <figcaption className="mt-4 flex items-center gap-3 border-t border-line pt-4">
+                <figcaption className="mt-2 flex items-center gap-3 border-t border-line pt-4">
                   <span
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${avatarColors[i % avatarColors.length]}`}
                     aria-hidden

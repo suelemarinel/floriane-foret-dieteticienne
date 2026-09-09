@@ -2,20 +2,27 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Salad, Dumbbell, Leaf } from "lucide-react";
 
 type AccompagnementCardProps = {
   href: string;
   label: string;
   tagline: string;
   audience: string;
-  color: "primary" | "accent" | "gold";
+  color: "primary" | "accent" | "terracotta";
   index: number;
 };
 
+const iconMap: Record<AccompagnementCardProps["color"], typeof Salad> = {
+  primary: Salad,
+  terracotta: Dumbbell,
+  accent: Leaf,
+};
+
 const badgeClasses: Record<AccompagnementCardProps["color"], string> = {
-  primary: "bg-primary/10 text-primary-dark",
-  accent: "bg-accent/20 text-accent-dark",
-  gold: "bg-gold/20 text-ink",
+  primary: "bg-primary/10 text-primary",
+  terracotta: "bg-terracotta/10 text-terracotta",
+  accent: "bg-accent/15 text-primary-dark",
 };
 
 export default function AccompagnementCard({
@@ -26,6 +33,8 @@ export default function AccompagnementCard({
   color,
   index,
 }: AccompagnementCardProps) {
+  const Icon = iconMap[color];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -39,11 +48,16 @@ export default function AccompagnementCard({
         className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-7 transition-colors hover:border-primary/40"
       >
         <span
-          className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${badgeClasses[color]}`}
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${badgeClasses[color]}`}
+          aria-hidden
         >
+          <Icon size={20} strokeWidth={1.5} />
+        </span>
+
+        <span className="mt-4 text-xs font-semibold uppercase tracking-wide text-ink-soft">
           {audience}
         </span>
-        <h3 className="mt-5 font-display text-2xl text-ink">{label}</h3>
+        <h3 className="mt-2 font-display text-2xl text-ink">{label}</h3>
         <p className="mt-3 grow text-sm leading-relaxed text-ink-soft">
           {tagline}
         </p>

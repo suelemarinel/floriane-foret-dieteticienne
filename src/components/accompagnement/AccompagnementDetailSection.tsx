@@ -1,21 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Salad, Dumbbell, Leaf } from "lucide-react";
 
 type AccompagnementDetailSectionProps = {
   id: string;
   label: string;
   audience: string;
-  color: "primary" | "accent" | "gold";
+  color: "primary" | "accent" | "terracotta";
   intro: string;
   forWho: string[];
   includes: string[];
 };
 
+const iconMap: Record<AccompagnementDetailSectionProps["color"], typeof Salad> = {
+  primary: Salad,
+  terracotta: Dumbbell,
+  accent: Leaf,
+};
+
 const badgeClasses: Record<AccompagnementDetailSectionProps["color"], string> = {
-  primary: "bg-primary/10 text-primary-dark",
-  accent: "bg-accent/20 text-accent-dark",
-  gold: "bg-gold/20 text-ink",
+  primary: "bg-primary/10 text-primary",
+  terracotta: "bg-terracotta/10 text-terracotta",
+  accent: "bg-accent/15 text-primary-dark",
 };
 
 function CheckList({ items }: { items: string[] }) {
@@ -46,6 +53,8 @@ export default function AccompagnementDetailSection({
   forWho,
   includes,
 }: AccompagnementDetailSectionProps) {
+  const Icon = iconMap[color];
+
   return (
     <motion.section
       id={id}
@@ -57,11 +66,16 @@ export default function AccompagnementDetailSection({
     >
       <div className="container-site">
         <span
-          className={`inline-flex w-fit items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide ${badgeClasses[color]}`}
+          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${badgeClasses[color]}`}
+          aria-hidden
         >
+          <Icon size={20} strokeWidth={1.5} />
+        </span>
+
+        <span className="mt-4 block text-xs font-semibold uppercase tracking-wide text-ink-soft">
           {audience}
         </span>
-        <h2 className="mt-4 font-display text-3xl text-ink md:text-4xl">
+        <h2 className="mt-2 font-display text-3xl text-ink md:text-4xl">
           {label}
         </h2>
         <p className="mt-4 max-w-2xl text-base leading-relaxed text-ink-soft md:text-lg">
