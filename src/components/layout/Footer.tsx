@@ -28,6 +28,15 @@ export default function Footer() {
               </a>
             </p>
           </div>
+
+          <Link
+            href={siteConfig.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-primary-dark"
+          >
+            Prendre rendez-vous
+          </Link>
         </div>
 
         <div>
