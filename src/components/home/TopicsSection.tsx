@@ -27,7 +27,7 @@ const topics = [
   {
     title: "Une digestion qui vous complique la vie ?",
     description:
-      "Trop de règles contradictoires, culpabilité, transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
+      "Transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
     keyword: "digest",
     icon: Leaf,
     badgeBg: "bg-accent/15",
