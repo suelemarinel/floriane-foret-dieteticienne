@@ -38,7 +38,7 @@ const topics = [
 export default function TopicsSection() {
   return (
     <section className="py-20 md:py-28">
-      <div className="container-site">
+      <div className="container-site relative">
         <div className="max-w-2xl">
           <span className="text-xs font-semibold uppercase tracking-wide text-primary">
             Ça vous parle ?
@@ -53,6 +53,19 @@ export default function TopicsSection() {
             l&apos;inverse.
           </p>
         </div>
+
+        <img
+          src="/illustrations/radis.svg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute right-4 top-1/8 hidden w-36 -translate-y-1/2 -rotate-[-30deg] select-none lg:block xl:right-8 xl:w-44"
+        />
+        <img
+        src="/illustrations/oignon.svg"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none select-none absolute left-[75%] top-[10%] z-20 hidden rotate-[30deg] w-[10%] lg:block"
+      />
 
         <div className="mt-14 border-t border-line">
           {topics.map((topic, i) => {

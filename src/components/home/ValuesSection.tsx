@@ -60,7 +60,13 @@ export default function ValuesSection() {
               </p>
             </div>
 
-            <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            <div className="relative mt-10 grid gap-5 sm:grid-cols-2">
+              <img
+                src="/illustrations/fougere-oblique.svg"
+                alt=""
+                aria-hidden="true"
+                className="pointer-events-none absolute left-5/6 top-1 -z-10 hidden w-[100%] -translate-x-1/2 -translate-y-1/2 select-none lg:block"
+              />
               {values.map((value, i) => (
                 <motion.div
                   key={value.title}

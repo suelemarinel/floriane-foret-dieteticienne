@@ -4,10 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/site-config";
+import HeroDecor from "./HeroDecor";
 
 export default function Hero() {
   return (
     <section className="relative w-full overflow-hidden bg-cream">
+      <HeroDecor />
       <div className="mx-auto flex w-full max-w-[1600px] flex-col lg:flex-row">
         {/* Texte */}
         <div className="flex w-full flex-col justify-center px-6 pb-24 pt-28 md:px-10 md:pt-32 lg:w-1/2 lg:px-16 lg:pt-32 xl:pl-24">

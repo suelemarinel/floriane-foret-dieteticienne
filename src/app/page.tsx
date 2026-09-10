@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import Hero from "@/components/home/Hero";
+import HeroBleed from "@/components/home/HeroBleed";
 import TopicsSection from "@/components/home/TopicsSection";
+import TopicsBleed from "@/components/home/TopicsBleed";
 import ValuesSection from "@/components/home/ValuesSection";
 import SessionSteps from "@/components/home/SessionSteps";
 import Testimonials from "@/components/home/Testimonials";
@@ -17,8 +19,14 @@ export const metadata: Metadata = buildMetadata({
 export default function HomePage() {
   return (
     <>
-      <Hero />
-      <TopicsSection />
+      <div className="relative">
+        <Hero />
+        <HeroBleed />
+      </div>
+      <div className="relative">
+        <TopicsSection />
+        <TopicsBleed />
+      </div>
       <ValuesSection />
       <SessionSteps />
       <Testimonials />
