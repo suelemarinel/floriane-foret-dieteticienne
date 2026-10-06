@@ -1,4 +1,5 @@
 "use client";
+"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -27,7 +28,7 @@ const topics = [
   {
     title: "Une digestion qui vous complique la vie ?",
     description:
-      "Trop de règles contradictoires, culpabilité, transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
+      "Transit irrégulier, ballonnements occasionnels, inconfort chronique, SII, SIBO ou autre trouble digestif... Chaque situation mérite une approche adaptée pour retrouver un quotidien plus léger.",
     keyword: "digest",
     icon: Leaf,
     badgeBg: "bg-accent/15",
@@ -47,10 +48,9 @@ export default function TopicsSection() {
             Prendre soin de vous, à travers votre assiette
           </h2>
           <p className="mt-4 text-base leading-relaxed text-ink-soft md:text-lg">
-            Votre alimentation répond à des besoins physiologiques, mais
-            aussi psychologiques et sociaux. Peu importe votre point de
-            départ, l&apos;accompagnement s&apos;adapte à vous — pas
-            l&apos;inverse.
+            Manger, c&apos;est nourrir son corps, mais aussi ses émotions et
+            son quotidien. Quel que soit votre point de départ, c&apos;est
+            vous qui donnez le rythme, pas une méthode imposée.
           </p>
         </div>
 
@@ -61,11 +61,11 @@ export default function TopicsSection() {
           className="pointer-events-none absolute right-4 top-1/8 hidden w-36 -translate-y-1/2 -rotate-[-30deg] select-none lg:block xl:right-8 xl:w-44"
         />
         <img
-        src="/illustrations/oignon.svg"
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none select-none absolute left-[75%] top-[10%] z-20 hidden rotate-[30deg] w-[10%] lg:block"
-      />
+          src="/illustrations/oignon.svg"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none select-none absolute left-[75%] top-[10%] z-20 hidden rotate-[30deg] w-[10%] lg:block"
+        />
 
         <div className="mt-14 border-t border-line">
           {topics.map((topic, i) => {
