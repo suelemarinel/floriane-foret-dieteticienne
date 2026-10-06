@@ -26,7 +26,7 @@ export const siteConfig = {
   },
   bookingUrl: "https://www.doctoranytime.be/d/dieteticien/floriane-foret",
   description:
-    "Floriane Foret, diététicienne-nutritionniste à Bruxelles, vous accompagne avec bienveillance vers une alimentation équilibrée, durable et sans culpabilité : sport, troubles digestifs, rééquilibrage alimentaire.",
+    "Floriane Foret, diététicienne-nutritionniste à Bruxelles, vous accompagne avec bienveillance vers une alimentation équilibrée et durable : nutrition du sportif, troubles digestifs (SII, SIBO), rééquilibrage alimentaire.",
 } as const;
 
 // Mots-clés SEO de base. La cliente doit communiquer une liste complémentaire
@@ -40,6 +40,9 @@ export const seoKeywords = [
   "diététicienne sport",
   "diététicienne troubles digestifs",
   "consultation diététique Bruxelles",
+  "nutrition du sportif Bruxelles",
+  "diététicienne syndrome de l'intestin irritable",
+  "diététicienne SIBO",
   // TODO: compléter avec la liste de mots-clés fournie par la cliente
 ];
 
