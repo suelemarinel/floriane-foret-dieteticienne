@@ -30,9 +30,16 @@ export default function ParcoursHero() {
             De la théorie <span className="text-accent-dark italic">à votre assiette</span>
           </h1>
 
-          <p className="text-balance mt-6 max-w-md text-base leading-relaxed text-ink-soft md:text-lg">
-            [À compléter avec Floriane : ce qui l&apos;a amenée à devenir
-            diététicienne-nutritionniste.]
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-soft md:text-lg">
+            Cuisiner est pour moi un vrai plaisir, et c&apos;est ce qui m&apos;a
+            menée vers la nutrition, entre passion culinaire et rigueur
+            scientifique.
+          </p>
+          <p className="mt-4 max-w-lg text-base leading-relaxed text-ink-soft md:text-lg">
+            Pesco-végétarienne et sportive au quotidien, je crois en une
+            alimentation équilibrée qui laisse toute sa place au plaisir. Cette
+            conviction guide mon accompagnement, en cabinet comme en milieu
+            hospitalier.
           </p>
         </motion.div>
 
