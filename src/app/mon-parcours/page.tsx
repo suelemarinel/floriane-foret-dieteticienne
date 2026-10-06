@@ -8,7 +8,7 @@ import CTASection from "@/components/home/CTASection";
 export const metadata: Metadata = buildMetadata({
   title: "Mon parcours",
   description:
-    "Découvrez le parcours de Floriane Foret, diététicienne-nutritionniste à Bruxelles : formation, expériences et philosophie d'accompagnement.",
+    "Parcours de Floriane Foret, diététicienne-nutritionniste à Bruxelles : milieu hospitalier et cabinet, nutrition du sportif et syndrome de l'intestin irritable.",
   path: "/mon-parcours",
 });
 
