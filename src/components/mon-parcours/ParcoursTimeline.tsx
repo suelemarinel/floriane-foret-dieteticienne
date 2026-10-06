@@ -2,28 +2,39 @@
 
 import { motion } from "framer-motion";
 
-// Étapes à valider/compléter avec Floriane (années, intitulés exacts, écoles).
-const steps = [
+type Step = {
+  year: string;
+  title: string;
+  description?: string;
+  details?: string[];
+};
+
+const steps: Step[] = [
   {
-    year: "[Année]",
-    title: "Diplôme d'État de diététicienne-nutritionniste",
-    description: "[École ou université, ville — à compléter]",
+    year: "2019 – 2022",
+    title: "Bachelier en diététique",
   },
   {
-    year: "[Année]",
-    title: "[Premier poste ou stage marquant — à compléter]",
-    description: "[Ce que cette expérience lui a appris — à compléter]",
-  },
-  {
-    year: "[Année]",
-    title: "[Spécialisation ou formation complémentaire — à compléter]",
+    year: "2023 – 2024",
+    title: "Diététicienne clinicienne",
     description:
-      "[Ex : nutrition végétale, diabète de type 2, troubles digestifs, sport... — à compléter]",
+      "Premier poste, au sein de l'Hôpital Universitaire de Bruxelles.",
+  },
+  {
+    year: "2024 – Aujourd'hui",
+    title: "Deux pratiques complémentaires",
+    details: [
+      "Diététicienne clinicienne au sein des Cliniques de l'Europe",
+      "Diététicienne libérale dans un cabinet libéral à Bruxelles",
+    ],
   },
   {
     year: "Aujourd'hui",
-    title: "Cabinet libéral à Bruxelles",
-    description: "[Type de patientèle accompagnée aujourd'hui — à compléter]",
+    title: "Spécialisation complémentaire",
+    details: [
+      "Nutrition du sportif",
+      "Nutrition dans le cadre du syndrome de l'intestin irritable",
+    ],
   },
 ];
 
@@ -43,7 +54,7 @@ export default function ParcoursTimeline() {
         <div className="relative mt-14 space-y-10 border-l-2 border-line pl-8 md:pl-10">
           {steps.map((step, i) => (
             <motion.div
-              key={step.title}
+              key={`${step.year}-${step.title}`}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
@@ -60,9 +71,29 @@ export default function ParcoursTimeline() {
               <h3 className="mt-1 font-display text-xl text-ink">
                 {step.title}
               </h3>
-              <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
-                {step.description}
-              </p>
+
+              {step.description && (
+                <p className="mt-2 max-w-xl text-sm leading-relaxed text-ink-soft">
+                  {step.description}
+                </p>
+              )}
+
+              {step.details && (
+                <ul className="mt-3 max-w-xl space-y-2">
+                  {step.details.map((detail) => (
+                    <li
+                      key={detail}
+                      className="flex gap-3 text-sm leading-relaxed text-ink-soft"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-dark"
+                      />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </motion.div>
           ))}
         </div>
