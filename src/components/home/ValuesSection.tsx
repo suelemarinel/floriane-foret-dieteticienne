@@ -47,7 +47,7 @@ export default function ValuesSection() {
           {/* Contenu */}
           <div className="lg:col-span-7">
             <div className="max-w-2xl">
-              <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+              <span className="text-sm font-semibold uppercase tracking-wide text-primary">
                 Mon approche
               </span>
               <h2 className="text-balance mt-3 font-display text-3xl text-ink md:text-4xl">
@@ -61,12 +61,14 @@ export default function ValuesSection() {
             </div>
 
             <div className="relative mt-10 grid gap-5 sm:grid-cols-2">
+              {/*
               <img
                 src="/illustrations/fougere-oblique.svg"
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none absolute left-5/6 top-1 -z-10 hidden w-[100%] -translate-x-1/2 -translate-y-1/2 select-none lg:block"
-              />
+              /> */}
+          
               {values.map((value, i) => (
                 <motion.div
                   key={value.title}

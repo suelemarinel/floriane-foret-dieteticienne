@@ -1,4 +1,5 @@
 export default function TopicsBleed() {
+  {/*
   return (
     <img
       src="/illustrations/fougere-horizontale.svg"
@@ -7,4 +8,5 @@ export default function TopicsBleed() {
       className="pointer-events-none select-none absolute -left-[5%] -bottom-30 hidden w-[25%] rotate-[60deg] lg:block"
     />
   );
+  */}
 }

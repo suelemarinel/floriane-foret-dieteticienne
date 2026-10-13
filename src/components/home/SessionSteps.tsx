@@ -6,12 +6,12 @@ const steps = [
   {
     title: "Premier échange",
     description:
-      "Un temps d'écoute pour comprendre votre quotidien, vos besoins, vos craintes et vos envies. Tout commence toujours par là.",
+      "Un temps d'écoute pour comprendre votre quotidien, vos besoins, vos craintes et vos envies.",
   },
   {
     title: "Bilan complet",
     description:
-      "Habitudes alimentaires, mode de vie, antécédents : on pose les bases pour construire un accompagnement vraiment adapté à vous.",
+      "Habitudes alimentaires et mode de vie : on pose les bases pour construire un accompagnement adapté à vous.",
   },
   {
     title: "Plan d'action sur-mesure",
@@ -21,7 +21,7 @@ const steps = [
   {
     title: "Suivi & ajustements",
     description:
-      "On avance ensemble, séance après séance, en ajustant ce qui doit l'être. L'équilibre se construit sur la durée.",
+      "On avance ensemble, séance après séance, en ajustant ce qui doit l'être.",
   },
 ];
 
@@ -30,7 +30,7 @@ export default function SessionSteps() {
     <section className="bg-surface-mint/40 py-20 md:py-28">
       <div className="container-site">
         <div className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+          <span className="text-sm font-semibold uppercase tracking-wide text-primary">
             En pratique
           </span>
           <h2 className="text-balance mt-3 font-display text-3xl text-ink md:text-4xl">

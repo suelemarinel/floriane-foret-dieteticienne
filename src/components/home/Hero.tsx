@@ -37,13 +37,13 @@ export default function Hero() {
 
   <div className="mt-9 flex justify-center lg:justify-start">
     <Link
-      href={siteConfig.bookingUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-block rounded-full bg-primary px-8 py-4 text-sm font-semibold text-cream shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark"
-    >
-      Prendre rendez-vous
-    </Link>
+  href={siteConfig.bookingUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="inline-block rounded-full bg-primary px-7 py-5 text-base font-semibold text-cream shadow-lg shadow-primary/20 transition-colors hover:bg-primary-dark md:text-lg"
+>
+  Prendre rendez-vous
+</Link>
   </div>
 </motion.div>
         </div>
@@ -63,7 +63,7 @@ export default function Hero() {
     className="relative h-[100svh] w-full overflow-hidden rounded-tl-[3rem] rounded-bl-[3rem]"
   >
     <Image
-      src="/images/floriane-2.jpeg"
+      src="/images/floriane-6.jpeg"
       alt="Floriane Foret, diététicienne-nutritionniste, dans sa cuisine"
       fill
       priority

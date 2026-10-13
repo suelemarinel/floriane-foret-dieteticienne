@@ -11,7 +11,7 @@ export default function Footer() {
           <p className="font-display text-2xl text-primary-dark">
             Floriane Foret
           </p>
-          <p className="mt-3 max-w-sm text-sm leading-relaxed text-ink-soft">
+          <p className="mt-3 max-w-sm text-base leading-relaxed text-ink-soft">
             Diététicienne-nutritionniste à {siteConfig.city}. Un accompagnement
             bienveillant, sans régime ni culpabilité, pour retrouver une
             alimentation qui vous fait du bien.
@@ -30,21 +30,21 @@ export default function Footer() {
           </div>
 
           <Link
-            href={siteConfig.bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-cream transition-colors hover:bg-primary-dark"
-          >
-            Prendre rendez-vous
-          </Link>
+  href={siteConfig.bookingUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-6 inline-flex items-center justify-center rounded-full bg-primary px-7 py-4 text-base font-semibold text-cream transition-colors hover:bg-primary-dark"
+>
+  Prendre rendez-vous
+</Link>
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-ink">Navigation</p>
+          <p className="text-base font-semibold text-ink">Navigation</p>
           <ul className="mt-3 space-y-2">
             {mainNav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="text-sm text-ink-soft hover:text-primary">
+                <Link href={item.href} className="text-base text-ink-soft hover:text-primary">
                   {item.label}
                 </Link>
               </li>
@@ -53,11 +53,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="text-sm font-semibold text-ink">Accompagnements</p>
+          <p className="text-base font-semibold text-ink">Accompagnements</p>
           <ul className="mt-3 space-y-2">
             {accompagnements.map((item) => (
               <li key={item.slug}>
-                <Link href={item.href} className="text-sm text-ink-soft hover:text-primary">
+                <Link href={item.href} className="text-base text-ink-soft hover:text-primary">
                   {item.label}
                 </Link>
               </li>

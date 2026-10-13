@@ -3,45 +3,45 @@ export default function HeroDecor() {
     <>
       {/* ---- Calque arrière ---- */}
 
-      {/* Fougère horizontale — réduite et descendue pour dégager le logo */}
+      {/* Fougère horizontale — réduite et descendue pour dégager le logo 
       <img
         src="/illustrations/fougere-horizontale.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute -left-[2%] top-[6%] hidden w-[14%] lg:block"
-      />
+      /> */}
 
-      {/* Carotte — réduite et inclinée */}
+      {/* Carotte — réduite et inclinée
       <img
         src="/illustrations/carotte.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-[36%] top-[20%] hidden w-[6%] rotate-[30deg] lg:block"
-      />
+      /> */}
 
-      {/* Choux-fleur — réduite et décalée hors du texte */}
+      {/* Choux-fleur — réduite et décalée hors du texte
       <img
         src="/illustrations/choufleur.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-[1%] top-[48%] hidden w-[5%] lg:block"
-      />
+      /> */}
 
-      {/* Tomate rose */}
+      {/* Tomate rose 
       <img
         src="/illustrations/tomate-pink.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-[20%] top-[80%] hidden w-[5%] lg:block"
-      />
+      /> */}
 
-      {/* Tomate verte */}
+      {/* Tomate verte
       <img
         src="/illustrations/tomate-green.svg"
         alt=""
         aria-hidden="true"
         className="pointer-events-none select-none absolute left-[23%] top-[86%] hidden w-[4%] lg:block"
-      />
+      /> */}
 
 {/*
 

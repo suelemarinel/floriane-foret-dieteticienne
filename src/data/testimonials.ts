@@ -9,9 +9,9 @@ export const doctoranytimeRating = {
 };
 
 export const testimonials = [
-  { name: "U. E.", text: "Très bien.", date: "2 septembre 2026" },
-  { name: "O. E.", text: "Très bien !", date: "8 août 2026" },
-  { name: "H. L.", text: "Très bon suivi.", date: "30 juin 2026" },
+  { name: "I. U.", text: "J'ai été très bien reçu, je me suis sentie écoutée et en confiance pour démarrer un suivi nutritionnel. Merci beaucoup.", date: "6 octobre 2026" },
+  { name: "U. E.", text: "Premier rendez-vous avec Florianne Foret et c’était une très bonne expérience. Elle est attentive , pédagogue et prends bien le temps de tout expliquer. Son approche de la diététique n’est pas emplit de vieux principes et elle est très déculpabilisante. Je recommande!", date: "1 octobre 2026" },
+  { name: "L. 0.", text: "À l'écoute et efficace pour établir la stratégie la plus adaptée pour le rééquilibrage alimentaire personnalisé !", date: "22 setembre 2026" },
   {
     name: "E. O.",
     text: "Bon rendez-vous, bonnes informations, plus qu'à suivre les conseils !",

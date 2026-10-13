@@ -95,11 +95,11 @@ export default function Testimonials() {
       <div className="container-site">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
-            <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+            <span className="text-sm font-semibold uppercase tracking-wide text-primary">
               Témoignages
             </span>
             <h2 className="text-balance mt-3 font-display text-3xl text-ink md:text-4xl">
-              Leur avis compte plus que le mien
+              Leurs avis comptent plus que le mien
             </h2>
           </div>
 
@@ -142,7 +142,7 @@ export default function Testimonials() {
               data-card
               className="flex w-[280px] shrink-0 flex-col rounded-tl-2xl rounded-br-2xl border border-line bg-surface p-6 md:w-[300px]"
             >
-              <blockquote className="font-display text-xl leading-snug text-ink">
+              <blockquote className="font-sans text-[15px]! font-normal leading-relaxed text-ink md:text-lg">
                 &laquo; {t.text} &raquo;
               </blockquote>
 

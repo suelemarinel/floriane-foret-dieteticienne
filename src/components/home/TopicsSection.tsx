@@ -1,5 +1,4 @@
 "use client";
-"use client";
 
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -41,7 +40,7 @@ export default function TopicsSection() {
     <section className="py-20 md:py-28">
       <div className="container-site relative">
         <div className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-wide text-primary">
+          <span className="text-sm font-semibold uppercase tracking-wide text-primary">
             Ça vous parle ?
           </span>
           <h2 className="text-balance mt-3 font-display text-3xl text-ink md:text-4xl">
@@ -85,7 +84,7 @@ export default function TopicsSection() {
                 transition={{ duration: 0.5, delay: i * 0.08, ease: "easeOut" }}
                 className="flex flex-col gap-5 border-b border-line py-10 md:flex-row md:items-start md:justify-between md:gap-12"
               >
-                <div className="flex gap-5 md:max-w-xl">
+                <div className="flex gap-5 md:max-w-x1">
                   <span
                     className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-full ${topic.badgeBg}`}
                     aria-hidden
